@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77B84881278C417747E5722E /* Pods_PregBuddy_Tweets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5270207403A07D0D4B78960 /* Pods_PregBuddy_Tweets.framework */; };
 		8DF2030A204C77CE00C5C59C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF20309204C77CE00C5C59C /* AppDelegate.swift */; };
 		8DF2030C204C77CE00C5C59C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2030B204C77CE00C5C59C /* ViewController.swift */; };
 		8DF2030F204C77CE00C5C59C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF2030D204C77CE00C5C59C /* Main.storyboard */; };
@@ -24,6 +25,9 @@
 		8DF20313204C77CE00C5C59C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DF20316204C77CE00C5C59C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DF20318204C77CE00C5C59C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CC1AB1C7E34E89500F9DE49 /* Pods-PregBuddy Tweets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PregBuddy Tweets.release.xcconfig"; path = "Pods/Target Support Files/Pods-PregBuddy Tweets/Pods-PregBuddy Tweets.release.xcconfig"; sourceTree = "<group>"; };
+		D5270207403A07D0D4B78960 /* Pods_PregBuddy_Tweets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PregBuddy_Tweets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9845D6AFE8C89BBA0714119 /* Pods-PregBuddy Tweets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PregBuddy Tweets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PregBuddy Tweets/Pods-PregBuddy Tweets.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B84881278C417747E5722E /* Pods_PregBuddy_Tweets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2ECE7430C49E8A58616BA856 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5270207403A07D0D4B78960 /* Pods_PregBuddy_Tweets.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6956F060BE4FE3E5BB56982C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9845D6AFE8C89BBA0714119 /* Pods-PregBuddy Tweets.debug.xcconfig */,
+				9CC1AB1C7E34E89500F9DE49 /* Pods-PregBuddy Tweets.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8DF202FD204C77CE00C5C59C = {
 			isa = PBXGroup;
 			children = (
 				8DF20308204C77CE00C5C59C /* PregBuddy Tweets */,
 				8DF20307204C77CE00C5C59C /* Products */,
+				6956F060BE4FE3E5BB56982C /* Pods */,
+				2ECE7430C49E8A58616BA856 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DF2031B204C77CE00C5C59C /* Build configuration list for PBXNativeTarget "PregBuddy Tweets" */;
 			buildPhases = (
+				2BA2BF081E26648766494EBD /* [CP] Check Pods Manifest.lock */,
 				8DF20302204C77CE00C5C59C /* Sources */,
 				8DF20303204C77CE00C5C59C /* Frameworks */,
 				8DF20304204C77CE00C5C59C /* Resources */,
+				F50B380AE5F9DB3FF82FC73A /* [CP] Embed Pods Frameworks */,
+				5E045E1EA9B3C9368AD4CA46 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +160,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BA2BF081E26648766494EBD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PregBuddy Tweets-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E045E1EA9B3C9368AD4CA46 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PregBuddy Tweets/Pods-PregBuddy Tweets-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F50B380AE5F9DB3FF82FC73A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PregBuddy Tweets/Pods-PregBuddy Tweets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8DF20302204C77CE00C5C59C /* Sources */ = {
@@ -276,12 +354,13 @@
 		};
 		8DF2031C204C77CE00C5C59C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9845D6AFE8C89BBA0714119 /* Pods-PregBuddy Tweets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "PregBuddy Tweets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pregbuddy.tweets.PregBuddy-Tweets";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pregbuddy.tweets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -290,12 +369,13 @@
 		};
 		8DF2031D204C77CE00C5C59C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CC1AB1C7E34E89500F9DE49 /* Pods-PregBuddy Tweets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "PregBuddy Tweets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pregbuddy.tweets.PregBuddy-Tweets";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pregbuddy.tweets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

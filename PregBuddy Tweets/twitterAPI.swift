@@ -21,9 +21,9 @@ class twitterAPI: NSObject {
             let headers = ["Authorization":
                 "Bearer AAAAAAAAAAAAAAAAAAAAALMU4wAAAAAAbtnxf6T3OoXjVuGUjm6JGKYv7ho%3DcH8g9gi0yoa87FWbDOnQMzKfYXkEY8DDvE8oATYqGSciEFUHWF"]
             let params: [String : Any] = [
-                "q" : "pregnency",
+                "q" : "pregnancy",
                 "result_type" : "recent",
-                "count": 20
+                "count": 100
             ]
         
         Alamofire.request("https://api.twitter.com/1.1/search/tweets.json", method: .get, parameters: params, headers: headers).responseJSON(completionHandler: { (response) in

@@ -14,6 +14,9 @@ class tweetModel: NSObject {
     var tweet: String?
     var retweetCount: Int?
     var favoriteCount: Int?
+    var id: Int?
+    
+    var isBookmarked = false
     
     init(dictionary: [String: Any]) {
         super.init()
@@ -21,6 +24,7 @@ class tweetModel: NSObject {
         tweet = dictionary["text"] as? String
         retweetCount = dictionary["retweet_count"] as? Int
         favoriteCount = dictionary["favorite_count"] as? Int
+        id = dictionary["id"] as? Int
         
     }
 }

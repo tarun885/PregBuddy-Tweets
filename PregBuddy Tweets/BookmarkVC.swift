@@ -13,8 +13,7 @@ class BookmarkVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var tweets = [tweetModel]()
-    var Savedtweets = [NSManagedObject]()
+    var savedTweets = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +33,9 @@ class BookmarkVC: UIViewController {
     
     func loadTweets(){
         // Load saved tweet entities from core data
-        
-        tweets.removeAll()
-        Savedtweets.removeAll()
+
+        savedTweets.removeAll()
+        tableView.reloadData()
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tweet")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -48,14 +47,15 @@ class BookmarkVC: UIViewController {
             
             for data in result as! [NSManagedObject] {
                 
-                let keys = Array(data.entity.attributesByName.keys)
-                let dict = data.dictionaryWithValues(forKeys: keys)
-                print(dict)
-                self.tweets.append(tweetModel(dictionary: dict))
-                self.Savedtweets.append(data)
-                tableView.reloadData()
+//                let keys = Array(data.entity.attributesByName.keys)
+//                let dict = data.dictionaryWithValues(forKeys: keys)
+//                print(dict)
+//                self.tweets.append(tweetModel(dictionary: dict))
 //                print(data)
 //                print(data.value(forKey: "text") as! String)
+                
+                self.savedTweets.append(data)
+                tableView.reloadData()
             }
             
         } catch {
@@ -74,13 +74,15 @@ extension BookmarkVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count
+        return savedTweets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TweetCell
         
-        cell.tweet.text = tweets[indexPath.row].tweet
+        cell.tweet.text = savedTweets[indexPath.row].value(forKey: "text") as? String
+        cell.likes.text = "Likes: \(savedTweets[indexPath.row].value(forKey: "favoriteCount") ?? 0)"
+        cell.retweets.text = "Retweets: \(savedTweets[indexPath.row].value(forKey: "retweetCount") ?? 0)"
 //        cell.bookMarkBtn.tag = indexPath.row
         cell.bookMarkBtn.addTarget(self, action: #selector(self.bookmarkPressed(sender:)), for: .touchUpInside)
         return cell
@@ -95,7 +97,7 @@ extension BookmarkVC: UITableViewDelegate, UITableViewDataSource {
             // Remove proper entity from core data
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            context.delete(Savedtweets[indexPath!.row])
+            context.delete(savedTweets[indexPath!.row])
             
             do {
                 try context.save()
@@ -104,10 +106,12 @@ extension BookmarkVC: UITableViewDelegate, UITableViewDataSource {
             }
             
             // Remove cell from class array
-            tweets.remove(at: indexPath!.row)
+            savedTweets.remove(at: indexPath!.row)
             
             // Removev cell from tableview
             tableView.deleteRows(at: [indexPath!], with: .automatic)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTweets"), object: nil)
         }
     }
 }

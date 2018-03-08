@@ -13,10 +13,7 @@ import SwiftyJSON
 
 class twitterAPI: NSObject {
     
-    static let sharedInstance : twitterAPI = {
-        let instance = twitterAPI()
-        return instance
-    }()
+    static let sharedInstance = twitterAPI()
     
     // Fetch Tweets
     public func fetchTweets(completion: @escaping ((Bool, [tweetModel], String?)->Void)) {
